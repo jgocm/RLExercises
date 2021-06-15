@@ -6,55 +6,30 @@
 Resposta 1:
 
 ```
-Foram executadas 5 ações, o que provoca 5 estados (s1, s2, s3, s4, s5), para cada time step temos as seguintes qualidades das ações (Q), considerando a equanção Action-Value, apenas ações com Q diferente de 0:
-        A1  A2    A3  A4  A5
-    - 1: 0, 0,    0,  0,  0
-    - 2: 1, 0,    0,  0,  0
-    - 3: 1, 1,    0,  0,  0
-    - 4: 1, 1.5,  0,  0,  0
-    - 5: 1, 1.67, 0,  0,  0
+Conjunto de Ações e Recompensas:
+A1 = 1; R1 = -1
+A2 = 2; R2 = 1
+A3 = 2; R3 = -2
+A4 = 2; R4 = 2
+A5 = 3; R5 = 0
 
-Analisando cada momento individualmente, no que diz respeito a ação ε:
-    - 1: Inicialmente todos os Qs são 0, a escolha da ação a1 pode ter sido escolhida ε ou 1 - ε.
-    - 2: A ação a2 foi escolhida aqui, só pode ter sido aleatoriamente, visto que Q(A1) é o maior valor.
-    - 3: Aqui, as ações a1 e a2 possuem Q iguais, e novamente a ação a2 foi escolhida, o que pode ter sido escolhido ε ou 1 - ε.
-    - 4: Q(a2) é o maior valor, 1.5, pode ter sido a escolha gulosa (maior valor) ou aleátoria também (todas as ações têm a mesma probabilidade de serem escolhidas).
-    - 5: Nesse caso, Q(a2) é o maior valor, 1.67, e foi escolhida a ação a3, o que demostra que foi aleatória, pois a ação gulosa, a2, não foi escolhida.
+Computando as qualidades das ações a cada iteração:
+- t=0: Q(a)=0, para todos os valores de a
+- t=1: atualiza o valor Q(a=1)=-1
+- t=2: atualiza o valor Q(a=2)=1
+- t=3: atualiza o valor Q(a=2)=(1-2)/2=-0,5
+- t=4: atualiza o valor Q(a=2)=(1-2+2)/3=0,333
+- t=5: mantem o valor Q(a=3)=0
 
-Portanto, nos time steps 2 e 5, as ações foram escolhidas de forma aleátoria (ε), enquanto que no restante pode ter sido ε ou 1 - ε.
-```
+Assim, podemos computar a seguinte tabela com os valores de Qt(a):
+|     | Qt(a=1) | Qt(a=2) | Qt(a=3) | Qt(a=4) |
+|:---:|:-------:|:-------:|:-------:|:-------:|
+| t=0 |    0    |    0    |    0    |    0    | a=1 =>   Ação tomada aleatoriamente => pode ter ocorrido uma ação 'e'
+| t=1 |    -1   |    0    |    0    |    0    | a=2 =>   Ação tomada aleatoriamente entre as 3 gulosas => pode ter ocorrido uma ação 'e'
+| t=2 |    -1   |    1    |    0    |    0    | a=2 =>   Escolhe a ação gulosa => pode ter ocorrido uma ação 'e'
+| t=3 |    -1   |   -0,5  |    0    |    0    | a=2 =>   Escolhe ação não-gulosa => com certeza ocorreu uma ação 'e'
+| t=4 |    -1   |  0,333  |    0    |    0    | a=3 =>   Escolhe ação não-gulosa => com certeza ocorreu uma ação 'e'
+| t=5 |    -1   |  0,333  |    0    |    0    |
 
----
-Resposta 2:
 
-```
-Primeira iteração = não temos certeza se a ação 1 foi escolhida aleatoriamente ou se foi por padrão (Ex: Se Q1(a) = 0 para todos os a, então a primeira ação deve ser escolhida)
-
-Segunda iteração = Foi exploração, já que a greedy action era a primeira ação
-
-Terceira iteração = Empate entre a primeira e segunda ação. Não temos certeza se foi uma escolha aleatória entre as duas ou se foi por padrão (Ex: Entre um empate, escolher a mais recente)
-
-Quarta iteração = Greedy action
-
-Quinta iteração = Foi exploração, já que a greedy action era a segunda ação
-```
-
----
-Resposta 3:
-
-```
-Valoração dos estados S1 = 0, S2 = 0, S3 = 0, S4 = 0 ----> Ação tomada = 1
-No primeiro passo é possivel que tenha sido uma ação 'e' afinal todos os estados tinha valoração igual a zero
-
-Valoração dos estados S1 = -1, S2 = 0, S3 = 0, S4 = 0 ----> Ação tomada = 2
-No segundo passo é possivel que tenha sido uma ação 'e' pois  a melhor ação poderia ser S2, S3 ou S4
-
-Valoração dos estados S1 = -1, S2 = 1, S3 = 0, S4 = 0 ----> Ação tomada = 2
-No terceiro passo é possivel que tenha sido uma ação 'e' pois  a melhor ação é 2
-
-Valoração dos estados S1 = -1, S2 = -0,5, S3 = 0, S4 = 0 ----> Ação tomada = 2
-No quarto passo é usado uma ação 'e' pois  a melhor ação poderia ser 3 ou 4
-
-Valoração dos estados S1 = -1, S2 = 1/3, S3 = 0, S4 = 0 ----> Ação tomada = 3
-No quinto passo é usado uma ação 'e' pois  a melhor ação é 2
 ```
