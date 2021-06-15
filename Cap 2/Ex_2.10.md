@@ -1,35 +1,26 @@
-### *Exercise 2.2: Bandit example*
+### *Exercise 2.10:* 
 
-**Consider a k-armed bandit problem with k = 4 actions, denoted 1, 2, 3, and 4. Consider applying to this problem a bandit algorithm using "-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a) = 0, for all a. Suppose the initial sequence of actions and rewards is A1 = 1, R1 = -1, A2 = 2, R2 = 1, A3 = 2, R3 = -2, A4 = 2, R4 = 2, A5 = 3, R5 = 0. On some of these time steps the ε case may have occurred, causing an action to be selected at random. On which time steps did this definitely occur? On which time steps could this possibly have occurred?**
+**Suppose you face a 2-armed bandit task whose true action values change randomly from time step to time step. Specifically, suppose that, for any time step, the true values of actions 1 and 2 are respectively 0.1 and 0.2 with probability 0.5 (case A), and 0.9 and 0.8 with probability 0.5 (case B). If you are not able to tell which case you face at any step, what is the best expectation of success you can achieve and how should you behave to achieve it? Now suppose that on each step you are told whether you are facing case A or case B (although you still don’t know the true action values). This is an associative search task. What is the best expectation of success you can achieve in this task, and how should you behave to achieve it?**
 
 ---
 Resposta 1:
 
 ```
-Conjunto de Ações e Recompensas:
-A1 = 1; R1 = -1
-A2 = 2; R2 = 1
-A3 = 2; R3 = -2
-A4 = 2; R4 = 2
-A5 = 3; R5 = 0
+Sem o conhecimento do caso em que se encontra, podemos calcular os valores esperados para as ações 1 e 2 como:
+- E[a=1] = 0,1*0,5 + 0,9*0,5 = 0,5
+- E[a=2] = 0,2*0,5 + 0,8*0,5 = 0,5
 
-Computando as qualidades das ações a cada iteração:
-- t=0: Q(a)=0, para todos os valores de a
-- t=1: atualiza o valor Q(a=1)=-1
-- t=2: atualiza o valor Q(a=2)=1
-- t=3: atualiza o valor Q(a=2)=(1-2)/2=-0,5
-- t=4: atualiza o valor Q(a=2)=(1-2+2)/3=0,333
-- t=5: mantem o valor Q(a=3)=0
+Assim, o melhor comportamento a se adotar, neste caso, seria escolher as ações aleatoriamente, pois ambas devem convergir para obter a mesma qualidade Qt(a)
 
-Assim, podemos computar a seguinte tabela com os valores de Qt(a):
-|     | Qt(a=1) | Qt(a=2) | Qt(a=3) | Qt(a=4) |
-|:---:|:-------:|:-------:|:-------:|:-------:|
-| t=0 |    0    |    0    |    0    |    0    | a=1 =>   Ação tomada aleatoriamente => pode ter ocorrido uma ação 'e'
-| t=1 |    -1   |    0    |    0    |    0    | a=2 =>   Ação tomada aleatoriamente entre as 3 gulosas => pode ter ocorrido uma ação 'e'
-| t=2 |    -1   |    1    |    0    |    0    | a=2 =>   Escolhe a ação gulosa => pode ter ocorrido uma ação 'e'
-| t=3 |    -1   |   -0,5  |    0    |    0    | a=2 =>   Escolhe ação não-gulosa => com certeza ocorreu uma ação 'e'
-| t=4 |    -1   |  0,333  |    0    |    0    | a=3 =>   Escolhe ação não-gulosa => com certeza ocorreu uma ação 'e'
-| t=5 |    -1   |  0,333  |    0    |    0    |
+Já no caso em que se tem conhecimento do caso atual (A ou B), pode-se considerar um valor esperado para cada situação, ou seja:
+- E[a=1|s=A] = 0,1
+- E[a=2|s=A] = 0,2  =>  E[s=A] = P(a=2|s=A)*0,2+P(a=1|s=A)*0,1  =>  E[s=A] é maximizado quando o agente opta sempre pela ação 2
+- E[a=1|s=B] = 0,9
+- E[a=2|s=B] = 0,8  =>  Da mesma forma, E[s=B] é maximizado quando o agente opta sempre pela opção 1
+
+Assim, E[a|s] = 0,5*(P(a=2|s=A)*0,2+P(a=1|s=A)*0,1) + 0,5*(P(a=1|s=B)*0,9+P(a=2|s=B)*0,8) = 0,5*0,2 + 0,5*0,9 = 0,55
+
+Tendo conhecimento do seu estado atual, o agente pode reconhecer os valores de suas ações nos diferentes estados e buscar aquelas que dão um maior retorno.
 
 
 ```
