@@ -3,7 +3,7 @@
 **Give a table analogous to that in Example 3.3, but for p(s0, r|s, a). It should have columns for s, a, s0, r, and p(s0, r|s, a), and a row for every 4-tuple for which p(s0, r|s, a) > 0**
 
 ---
-Resposta 1:
+Resposta:
 
 ```
 Denotando as recompensas Rsearch e Rwait por 'rs' e rw', respectivamente:
