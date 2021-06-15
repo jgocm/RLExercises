@@ -24,11 +24,11 @@ Computando as qualidades das ações a cada iteração:
 Assim, podemos computar a seguinte tabela com os valores de Qt(a):
 |     | Qt(a=1) | Qt(a=2) | Qt(a=3) | Qt(a=4) |
 |:---:|:-------:|:-------:|:-------:|:-------:|
-| t=0 |    0    |    0    |    0    |    0    | a=1 =>   Ação tomada aleatoriamente => pode ter ocorrido uma ação 'e'
-| t=1 |    -1   |    0    |    0    |    0    | a=2 =>   Ação tomada aleatoriamente entre as 3 gulosas => pode ter ocorrido uma ação 'e'
-| t=2 |    -1   |    1    |    0    |    0    | a=2 =>   Escolhe a ação gulosa => pode ter ocorrido uma ação 'e'
-| t=3 |    -1   |   -0,5  |    0    |    0    | a=2 =>   Escolhe ação não-gulosa => com certeza ocorreu uma ação 'e'
-| t=4 |    -1   |  0,333  |    0    |    0    | a=3 =>   Escolhe ação não-gulosa => com certeza ocorreu uma ação 'e'
+| t=0 |    0    |    0    |    0    |    0    | a=1 =>   Ação tomada aleatoriamente => pode ter ocorrido uma ação ε 
+| t=1 |    -1   |    0    |    0    |    0    | a=2 =>   Ação tomada aleatoriamente entre as 3 gulosas => pode ter ocorrido uma ação ε 
+| t=2 |    -1   |    1    |    0    |    0    | a=2 =>   Escolhe a ação gulosa => pode ter ocorrido uma ação ε 
+| t=3 |    -1   |   -0,5  |    0    |    0    | a=2 =>   Escolhe ação não-gulosa => com certeza ocorreu uma ação ε 
+| t=4 |    -1   |  0,333  |    0    |    0    | a=3 =>   Escolhe ação não-gulosa => com certeza ocorreu uma ação ε 
 | t=5 |    -1   |  0,333  |    0    |    0    |
 
 
