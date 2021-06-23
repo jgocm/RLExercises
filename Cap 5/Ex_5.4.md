@@ -12,7 +12,7 @@ Resposta:
 ReturnsAvg <- 0
 
 3) Para cada passo do episódio, após a atribuição do valor da recompensa acumulada, será computado o novo valor da média da recompensa acumulada:
-ReturnsAvg <- (ReturnsAvg+G)/(T-t)
+ReturnsAvg <- (ReturnsAvg*(T-t+1)+G)/(T-t)
 
 4) Os valores de G não serão mais armazenados em Returns(St, At) e Q(St,At) <- ReturnsAvg
 
