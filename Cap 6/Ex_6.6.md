@@ -6,14 +6,16 @@ that these could have been computed. Which would you guess we actually used? Why
 Resposta:
 
 ```
-1) Os valores poderiam ser obtidos através de aprendizagem de máquinas, utilizando um algoritmo TD(0), por exemplo, como demonstrado no próprio exemplo, que compara a convergência de diferentes implementações com diferentes valores para os parâmetros α, ou;
+1) Os valores poderiam ser obtidos através de aprendizagem de máquinas, utilizando um algoritmo TD(0), por exemplo, 
+como demonstrado no próprio Ex. 6.2, que compara a convergência de diferentes implementações com diferentes valores para os parâmetros α, ou;
 
 2) Como os valores de cada estado podem ser dados pela probabilidade de obter recompensa 1 a partir daquele estado, ou seja, de finalizar o episódio no estado terminal 
 da direita, podemos computar V(s) da seguinte forma:
-p(s=T,r=1|E) = 0,5 + p(s=T,r=1|D)
-p(s=T,r=1|D) = 0,5*(p(s=T,r=1|E) + p(s=T,r=1|C))
-p(s=T,r=1|C) = 0,5*(p(s=T,r=1|D) + p(s=T,r=1|B))
-p(s=T,r=1|B) = 0,5*p(s=T,r=1|A)
+V(E) = p(s=T,r=1|E) = 0,5 + p(s=T,r=1|D)
+V(D) = p(s=T,r=1|D) = 0,5*(p(s=T,r=1|E) + p(s=T,r=1|C))
+V(C) = p(s=T,r=1|C) = 0,5*(p(s=T,r=1|D) + p(s=T,r=1|B))
+V(B) = p(s=T,r=1|B) = 0,5*p(s=T,r=1|A)
+V(A) = p(s=T,r=1|A)
 
 Denotando p(s=T,r=1|E) por p1(E) e assim por diante, apenas por simplificação, temos:
 p1(B) = 2*p1(A)
