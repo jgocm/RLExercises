@@ -6,11 +6,10 @@ that these could have been computed. Which would you guess we actually used? Why
 Resposta:
 
 ```
-1) Os valores poderiam ser obtidos através de aprendizagem de máquinas, utilizando um algoritmo TD(0), por exemplo, como demonstrado no próprio exemplo, que compara a convergência
-de diferentes implementações com diferentes valores para os parâmetros α, ou;
+1) Os valores poderiam ser obtidos através de aprendizagem de máquinas, utilizando um algoritmo TD(0), por exemplo, como demonstrado no próprio exemplo, que compara a convergência de diferentes implementações com diferentes valores para os parâmetros α, ou;
 
-2) Como os valores de cada estado podem ser dados pela probabilidade de obter recompensa 1 a partir daquele estado, ou seja, de finalizar o episódio no estado terminal da direita,
-podemos computar V(s) da seguinte forma:
+2) Como os valores de cada estado podem ser dados pela probabilidade de obter recompensa 1 a partir daquele estado, ou seja, de finalizar o episódio no estado terminal 
+da direita, podemos computar V(s) da seguinte forma:
 p(s=T,r=1|E) = 0,5 + p(s=T,r=1|D)
 p(s=T,r=1|D) = 0,5*(p(s=T,r=1|E) + p(s=T,r=1|C))
 p(s=T,r=1|C) = 0,5*(p(s=T,r=1|D) + p(s=T,r=1|B))
