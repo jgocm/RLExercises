@@ -10,14 +10,14 @@ Resposta:
 como demonstrado no próprio Ex. 6.2, que compara a convergência de diferentes implementações com diferentes valores para os parâmetros α, ou;
 
 2) Como os valores de cada estado podem ser dados pela probabilidade de obter recompensa 1 a partir daquele estado, ou seja, de finalizar o episódio no estado terminal 
-da direita, podemos computar V(s) da seguinte forma:
-V(E) = p(s=T,r=1|E) = 0,5 + p(s=T,r=1|D)
+da direita e, a cada passo, as probabilidades de se mover para a direita ou esquerda são iguais, podemos computar V(s) da seguinte forma:
+V(E) = p(s=T,r=1|E) = 0,5 + 0,5*p(s=T,r=1|D)
 V(D) = p(s=T,r=1|D) = 0,5*(p(s=T,r=1|E) + p(s=T,r=1|C))
 V(C) = p(s=T,r=1|C) = 0,5*(p(s=T,r=1|D) + p(s=T,r=1|B))
 V(B) = p(s=T,r=1|B) = 0,5*p(s=T,r=1|A)
 V(A) = p(s=T,r=1|A)
 
-Denotando p(s=T,r=1|E) por p1(E) e assim por diante, apenas por simplificação, temos:
+Denotando p(s=T,r=1|E) por p1(E) e assim por diante, apenas por simplificação, a partir das equações acima temos:
 p1(B) = 2*p1(A)
 p1(C) = 3*p1(A)
 p1(D) = 4*p1(A)
@@ -29,7 +29,7 @@ p2(C) = 3*p2(E)
 p2(B) = 4*p2(E)
 p2(A) = 5*p2(E)
 
-Porém, para qualquer estado X, temo que p(s=T,r=1|X) + p(s=T,r=0|X) = 1, logo:
+Porém, para qualquer estado X, temos que p(s=T,r=1|X) + p(s=T,r=0|X) = 1, logo:
 p(s=T,r=1|E) + p(s=T,r=0|E) = p1(E) + p2(E) = 5*p1(A) + 1/5*(1-p1(A)) = 1
 => 25*p1(A) + 1 - p1(A) = 5 => 24*p1(A) = 4 => p1(A) = 1/6
 
