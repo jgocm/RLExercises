@@ -1,6 +1,6 @@
 ### *Exercise 6.6:*
 
-**In Example 6.2 we stated that the true values for the random walk example are 1/6 , 2/6 , 3/6 , 4/6 , and 5/6 , for states A through E. Describe at least two different ways
+**In Example 6.2 we stated that the true values for the random walk example are 1/6, 2/6, 3/6, 4/6, and 5/6, for states A through E. Describe at least two different ways
 that these could have been computed. Which would you guess we actually used? Why?**
 ---
 Resposta:
